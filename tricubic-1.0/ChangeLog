@@ -1,0 +1,6 @@
+2004 01 20 Package location http://gyre.cds.caltech.edu/pub/software/tricubic
+2004 01 20 Package version 1.0 released
+2004 01 18 Added man pages: tricubic libtricubic, etc in -S 3
+2004 01 18 Man pages install by make install
+2004 01 14 Change the header ltricubic.h to tricubic.h
+2004 01 05 Added full matrix in .tex, .pdf and .ps format in doc/

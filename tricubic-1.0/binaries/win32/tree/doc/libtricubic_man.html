@@ -1,0 +1,125 @@
+Content-type: text/html
+
+<HTML><HEAD><TITLE>Manpage of libtricubic</TITLE>
+</HEAD><BODY>
+<H1>libtricubic</H1>
+Section: TRICUBIC INTERPOLATION (3)<BR>Updated: January 15, 2004<BR><A HREF="#index">Index</A>
+<A HREF="http://localhost/cgi-bin/man/man2html">Return to Main Contents</A><HR>
+
+<A NAME="lbAB">&nbsp;</A>
+<H2>NAME </H2>
+
+libtricubic - Library implementing tricubic interpolation.
+<A NAME="lbAC">&nbsp;</A>
+<H2>SYNOPSIS </H2>
+
+<B>include &lt;<A HREF="file:/usr/include/tricubic.h">tricubic.h</A>&gt;</B>
+
+<P>
+<B>char *tricubic_version(void);</B>
+
+<P>
+<B>void tricubic_get_coeff(double </B><I>a[64]</I>, double <I>f[8]</I>, double <I>dfdx[8]</I>, double <I>dfdy[8]</I>, double <I>dfdz[8]</I>, double <I>d2fdxdy[8]</I>, double <I>d2fdxdz[8]</I>, double <I>d2fdydz[8]</I>, double <I>d3fdxdydz[8]</I>);
+
+<P>
+<B>double tricubic_eval(double </B><I>a[64]</I>, double <I>x</I>, double <I>y</I>, double <I>z</I>);
+
+<P>
+<B>double tricubic_eval(double </B><I>a[64]</I>, double <I>x</I>, double <I>y</I>, double <I>z</I>, int <I>derx</I>, int <I>dery</I>, int <I>derz</I>);
+
+<BR>&nbsp;
+<B>void tricubic_pointID2xyz(int </B><I>id</I>, int *<I>x</I>, int *<I>y</I>, int *<I>z</I>);
+
+<P>
+<B>void tricubic_pointID2xyz(int </B><I>id</I>, double *<I>x</I>, double *<I>y</I>, double *<I>z</I>);
+
+<P>
+<A NAME="lbAD">&nbsp;</A>
+<H2>DESCRIPTION</H2>
+
+The function
+<B>tricubic_get_coeff()</B>
+
+computes the 64 coefficients <I>a[64]</I> based on the values of the function f and some derivtives at the 8 corners of the cube. 
+<B>tricubic_eval()</B>
+
+returns the value of the interpolated function at the point <I>x</I>, <I>y</I>, <I>z</I>. The vector <I>a[64]</I> must be filled by 
+<B>tricubic_get_coeff()</B>
+
+first. 
+<P>
+The derivatives of f with respect to any combination of variable <I>x</I>, <I>y</I>, <I>z</I> is obtained using the overloaded form of
+<B>tricubic_eval()</B>
+
+that accepts the degrees <I>derx</I>, <I>dery</I> and <I>derz</I> of each partial derivative. Notice that f is tricubic, so the value of any derivative with <I>derx</I>&gt;3, <I>dery</I>&gt;3 or <I>derz</I>&gt;3 is necessarily 0.
+<P>
+The function 
+<B>tricubic_pointID2xyz()</B>
+
+is used to identify the corners of the cube. The input <I>id</I> is an integer between 0 and 7 and the output is the value of <I>x</I>, <I>y</I>, and <I>z</I> at the corresponding corner.
+<A NAME="lbAE">&nbsp;</A>
+<H2>DOCUMENTATION</H2>
+
+F. Lekien, C. Coulliette and J. Marsden, Tricubic Interpolation, International Journal of Numerical methods in Engineering, Volume ??, pp 10-20, 2004
+<A NAME="lbAF">&nbsp;</A>
+<H2>DOWNLOAD AND SOURCE</H2>
+
+<A HREF="http://gyre.cds.caltech.edu/pub/software/tricubic">http://gyre.cds.caltech.edu/pub/software/tricubic</A>
+<A NAME="lbAG">&nbsp;</A>
+<H2>SEE ALSO </H2>
+
+<A HREF="http://gyre.cds.caltech.edu/pub/software/tricubic/doc">http://gyre.cds.caltech.edu/pub/software/tricubic/doc</A>
+<A NAME="lbAH">&nbsp;</A>
+<H2>EXAMPLE</H2>
+
+See commented example in <A HREF="http://gyre.cds.caltech.edu/pub/software/tricubic/doc/tric.pdf">http://gyre.cds.caltech.edu/pub/software/tricubic/doc/tric.pdf</A>
+<A NAME="lbAI">&nbsp;</A>
+<H2>COPYRIGHT </H2>
+
+<B>libtricubic is Copyright (c) 2003-2004 Francois Lekien and Chad Coulliette.</B>
+
+<P>
+This program is free software; you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published 
+by the Free Software Foundation; either version 2 of the License, 
+or (at your option) any later version.
+<P>
+You should have received a copy of the GNU General Public License 
+along with this program; if not, write to the Free Software 
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, 
+MA 02111-1307 USA.
+<P>
+<A NAME="lbAJ">&nbsp;</A>
+<H2>BUGS</H2>
+
+Report bugs to <A HREF="mailto:lekien@mit.edu">lekien@mit.edu</A>
+<P>
+<A NAME="lbAK">&nbsp;</A>
+<H2>AUTHORS </H2>
+
+<B>Francois Lekien and Chad Coulliette</B>
+
+E-mail : <A HREF="mailto:lekien@mit.edu">lekien@mit.edu</A>
+<P>
+
+<HR>
+<A NAME="index">&nbsp;</A><H2>Index</H2>
+<DL>
+<DT><A HREF="#lbAB">NAME </A><DD>
+<DT><A HREF="#lbAC">SYNOPSIS </A><DD>
+<DT><A HREF="#lbAD">DESCRIPTION</A><DD>
+<DT><A HREF="#lbAE">DOCUMENTATION</A><DD>
+<DT><A HREF="#lbAF">DOWNLOAD AND SOURCE</A><DD>
+<DT><A HREF="#lbAG">SEE ALSO </A><DD>
+<DT><A HREF="#lbAH">EXAMPLE</A><DD>
+<DT><A HREF="#lbAI">COPYRIGHT </A><DD>
+<DT><A HREF="#lbAJ">BUGS</A><DD>
+<DT><A HREF="#lbAK">AUTHORS </A><DD>
+</DL>
+<HR>
+This document was created by
+<A HREF="http://localhost/cgi-bin/man/man2html">man2html</A>,
+using the manual pages.<BR>
+Time: 22:24:18 GMT, April 26, 2005
+</BODY>
+</HTML>

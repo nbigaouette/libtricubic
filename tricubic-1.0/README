@@ -1,0 +1,22 @@
+Documentation for libtricubic can be found in doc/. Extended documentation is available at http://gyre.cds.caltech.edu/pub/software/tricubic/doc/
+
+Installation instruction are in file INSTALL. However, the following procedure should work for you
+
+%gunzip tricubic-1.0.tar.gz
+%tar -xvf tricubic-1.0.tar
+%cd tricubic-1.0/
+%./configure
+%make
+
+To install for all users (need root password):
+%su
+%make install
+
+To install for a single user
+%./configure --prefix=/home/userlogin
+%make
+%make install
+
+
+Francois Lekien
+ lekien@mit.edu

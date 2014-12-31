@@ -1,0 +1,36 @@
+#WINDOWS BUILD INFORMATION (with cygwin and gcc)
+#STATIC:
+cd src/libtricubic/
+gcc -mno-cygwin -c libtricubic.cpp -o libtricubic.o
+gcc -mno-cygwin -c tricubic_utils.cpp -o tricubic_utils.o
+ar rc libtricubic.a libtricubic.o tricubic_utils.o
+ranlib libtricubic.a
+cp libtricubic.a libtricubic.lib
+cd ..
+gcc -mno-cygwin example1.cpp -o example1.exe -I./libtricubic -L./libtricubic -ltricubic
+gcc -mno-cygwin example2.cpp -o example2.exe -I./libtricubic -L./libtricubic -ltricubic
+gcc -mno-cygwin example3.cpp -o example3.exe -I./libtricubic -L./libtricubic -ltricubic
+mkdir win_static
+mv libtricubic/libtricubic.a win_static/
+mv libtricubic/libtricubic.lib win_static/
+mv example1.exe win_static/
+mv example2.exe win_static/
+mv example3.exe win_static/
+rm *.o
+rm libtricubic/*.o
+#DYNAMIC:
+cd src/libtricubic/
+gcc -mno-cygwin -shared -fPIC -c libtricubic.cpp -o libtricubic.o
+gcc -mno-cygwin -shared -fPIC -c tricubic_utils.cpp -o tricubic_utils.o
+gcc -mno-cygwin -shared -fPIC -o libtricubic.dll libtricubic.o tricubic_utils.o
+cd ..
+gcc -mno-cygwin example1.cpp -o example1.exe -I./libtricubic -L./libtricubic -ltricubic
+gcc -mno-cygwin example2.cpp -o example2.exe -I./libtricubic -L./libtricubic -ltricubic
+gcc -mno-cygwin example3.cpp -o example3.exe -I./libtricubic -L./libtricubic -ltricubic
+mkdir win_dynamic
+mv libtricubic/libtricubic.dll win_dynamic/
+mv example1.exe win_dynamic/
+mv example2.exe win_dynamic/
+mv example3.exe win_dynamic/
+rm *.o
+rm libtricubic/*.o

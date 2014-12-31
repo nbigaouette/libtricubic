@@ -1,0 +1,61 @@
+.TH tricubic_pointID2xyz 3 "January 15, 2004" "version 1.0" "TRICUBIC INTERPOLATION"
+.SH NAME 
+libtricubic \- Library implementing tricubic interpolation.
+.SH SYNOPSIS 
+.B include <tricubic.h>
+
+.B char *tricubic_version(void);
+
+.B void tricubic_get_coeff(double \fIa[64]\fP, double \fIf[8]\fP, double \fIdfdx[8]\fP, double \fIdfdy[8]\fP, double \fIdfdz[8]\fP, double \fId2fdxdy[8]\fP, double \fId2fdxdz[8]\fP, double \fId2fdydz[8]\fP, double \fId3fdxdydz[8]\fP);
+
+.B double tricubic_eval(double \fIa[64]\fP, double \fIx\fP, double \fIy\fP, double \fIz\fP);
+
+.B double tricubic_eval(double \fIa[64]\fP, double \fIx\fP, double \fIy\fP, double \fIz\fP, int \fIderx\fP, int \fIdery\fP, int \fIderz\fP);
+ 
+.B void tricubic_pointID2xyz(int \fIid\fP, int *\fIx\fP, int *\fIy\fP, int *\fIz\fP);
+
+.B void tricubic_pointID2xyz(int \fIid\fP, double *\fIx\fP, double *\fIy\fP, double *\fIz\fP);
+
+.SH DESCRIPTION
+The function
+.B tricubic_get_coeff()
+computes the 64 coefficients \fIa[64]\fP based on the values of the function f and some derivtives at the 8 corners of the cube. 
+.B tricubic_eval()
+returns the value of the interpolated function at the point \fIx\fP, \fIy\fP, \fIz\fP. The vector \fIa[64]\fP must be filled by 
+.B tricubic_get_coeff()
+first. 
+
+The derivatives of f with respect to any combination of variable \fIx\fP, \fIy\fP, \fIz\fP is obtained using the overloaded form of
+.B tricubic_eval()
+that accepts the degrees \fIderx\fP, \fIdery\fP and \fIderz\fP of each partial derivative. Notice that f is tricubic, so the value of any derivative with \fIderx\fP>3, \fIdery\fP>3 or \fIderz\fP>3 is necessarily 0.
+
+The function 
+.B tricubic_pointID2xyz()
+is used to identify the corners of the cube. The input \fIid\fP is an integer between 0 and 7 and the output is the value of \fIx\fP, \fIy\fP, and \fIz\fP at the corresponding corner.
+.SH DOCUMENTATION
+F. Lekien, C. Coulliette and J. Marsden, Tricubic Interpolation, International Journal of Numerical methods in Engineering, Volume ??, pp 10-20, 2004
+.SH DOWNLOAD AND SOURCE
+http://gyre.cds.caltech.edu/pub/software/tricubic
+.SH SEE ALSO 
+http://gyre.cds.caltech.edu/pub/software/tricubic/doc
+.SH EXAMPLE
+See commented example in http://gyre.cds.caltech.edu/pub/software/tricubic/doc/tric.pdf
+.SH COPYRIGHT 
+.B libtricubic is Copyright (c) 2003-2004 Francois Lekien and Chad Coulliette.
+
+This program is free software; you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published 
+by the Free Software Foundation; either version 2 of the License, 
+or (at your option) any later version.
+
+You should have received a copy of the GNU General Public License 
+along with this program; if not, write to the Free Software 
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, 
+MA 02111-1307 USA.
+
+.SH BUGS
+Report bugs to lekien@mit.edu
+
+.SH AUTHORS 
+.B Francois Lekien and Chad Coulliette
+E-mail : lekien@mit.edu
