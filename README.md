@@ -24,21 +24,33 @@ which seems like an FTP listing. No files are accessible.
 The listing shows:
 
 >  Modified                      Size      Name
+>
 > 5/13/2007     6:35         <Folder>   Parent Folder
+>
 > 4/23/2004     4:18         <Folder>   doc
+>
 > 1/20/2004     7:30         <Folder>   source
+>
 > 1/20/2004     7:36         <Folder>   private
+>
 > 1/21/2004     5:51         <Folder>   binaries
 
 The `doc` folder listing shows:
 
 >  Modified                      Size      Name
+>
 > 1/20/2004     7:36         <Folder>   Parent Folder
+>
 > 1/20/2004     7:33            4,445   libtricubic_man.html
+>
 > 1/20/2004     7:33            2,898   libtricubic.3
+>
 > 1/20/2004     8:09          149,663   tric.ps
+>
 > 1/20/2004     8:09          156,181   tric.pdf
+>
 > 4/23/2004     4:16           12,548   coeff.h
+>
 > 4/23/2004     4:18           12,548   coeff.h.txt
 
 The only place where the code could be found was on the `fix-phonon` project
